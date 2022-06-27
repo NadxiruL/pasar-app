@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Pasar extends StatefulWidget {
@@ -13,24 +12,17 @@ class _PasarState extends State<Pasar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Hello',
-          textAlign: TextAlign.center,
-        ),
+        title: Text('Hello'),
       ),
-      body: Row(
+      body: Stack(
         children: [
-          Column(
-            children: [
-              Text('Hello'),
-              Text('Hello'),
-            ],
+          Text(
+            'Hello',
+            textDirection: TextDirection.rtl,
           ),
-          Column(
-            children: [
-              Text('Hello'),
-              Text('Hello'),
-            ],
+          Text(
+            'Hello',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
       ),
