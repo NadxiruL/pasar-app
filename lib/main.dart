@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'El Coffe',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
+        fontFamily: 'Lato',
       ),
       home: ProductsOverviewScreen(),
     );

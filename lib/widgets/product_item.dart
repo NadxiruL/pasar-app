@@ -11,25 +11,31 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Widget ini untuk paparan grid item kelihatan mcm mana.
-    return GridTile(
-      child: Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
-      ),
-      //untuk bar hitam pada image
-      footer: GridTileBar(
-        backgroundColor: Colors.black54,
-        leading: IconButton(
-          icon: Icon(Icons.favorite),
-          onPressed: () {},
+    //Clip Rounded Rectangle
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: GridTile(
+        child: Image.network(
+          imageUrl,
+          fit: BoxFit.cover,
         ),
-        title: Text(
-          title,
-          textAlign: TextAlign.center,
-        ),
-        trailing: IconButton(
-          icon: Icon(Icons.add_shopping_cart),
-          onPressed: () {},
+        //untuk bar hitam pada image
+        footer: GridTileBar(
+          backgroundColor: Colors.black38,
+          leading: IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {},
+            color: Theme.of(context).accentColor,
+          ),
+          title: Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
+          trailing: IconButton(
+            icon: Icon(Icons.add_shopping_cart),
+            onPressed: () {},
+            color: Theme.of(context).accentColor,
+          ),
         ),
       ),
     );
