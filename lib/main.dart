@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pasar_app/screens/products_overview_screen.dart';
+import 'package:provider/provider.dart';
+import './screens/products_overview_screen.dart';
+import './screens/product_details_screen.dart';
+import './providers/products_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +13,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'El Coffe',
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-        fontFamily: 'Lato',
+    return ChangeNotifierProvider(
+      //provider 4.0 dan ke atas perlu guna create // 3.0 ke bawah use builder
+      create: (context) => ProductsProvider(),
+      child: MaterialApp(
+        title: 'El Coffe',
+        theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+          fontFamily: 'Lato',
+        ),
+        home: ProductsOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+        },
       ),
-      home: ProductsOverviewScreen(),
     );
   }
 }

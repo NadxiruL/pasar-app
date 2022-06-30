@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/product_details_screen.dart';
 
 class ProductItem extends StatelessWidget {
   //const ProductItem(String? id, {Key? key, required this.id, required this.title, required this.imageUrl}) : super(key: key);
@@ -15,9 +16,15 @@ class ProductItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
-        child: Image.network(
-          imageUrl,
-          fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context)
+                .pushNamed(ProductDetailScreen.routeName, arguments: id);
+          },
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+          ),
         ),
         //untuk bar hitam pada image
         footer: GridTileBar(
