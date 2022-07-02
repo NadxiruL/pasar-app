@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider.value(
       //provider 4.0 dan ke atas perlu guna create // 3.0 ke bawah use builder
-      create: (context) => Products(),
+      value: Products(),
       child: MaterialApp(
-        title: 'Ngopi Dulu',
+        title: 'El Coffee',
         theme: ThemeData(
           primarySwatch: Colors.cyan,
           fontFamily: 'Lato',
