@@ -14,15 +14,19 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  Map<String, CartItem>? _items;
+  final Map<String, CartItem>? _items = {};
 
   Map<String, CartItem>? get items {
     return {...?_items};
   }
 
+  int get itemCount {
+    return _items!.length;
+  }
+
   void addItem(
     String productId,
-    String price,
+    double price,
     String title,
     String quantity,
   ) {
@@ -30,11 +34,11 @@ class Cart with ChangeNotifier {
       //...
       _items?.update(
         productId,
-        (exisitingCartItem) => CartItem(
-          id: exisitingCartItem.id,
-          title: exisitingCartItem.title,
-          price: exisitingCartItem.price,
-          quantity: exisitingCartItem.quantity! + 1,
+        (existingCartItem) => CartItem(
+          id: existingCartItem.id,
+          title: existingCartItem.title,
+          price: existingCartItem.price,
+          quantity: existingCartItem.quantity! + 1,
         ),
       );
     } else {
@@ -43,10 +47,11 @@ class Cart with ChangeNotifier {
         () => CartItem(
           id: DateTime.now().toString(),
           title: title,
-          price: price as double,
+          price: price,
           quantity: 1,
         ),
       );
     }
+    notifyListeners();
   }
 }

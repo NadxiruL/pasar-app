@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/product_details_screen.dart';
 import '../providers/product.dart';
+import '../providers/cart.dart';
 
 class ProductItem extends StatelessWidget {
   //const ProductItem(String? id, {Key? key, required this.id, required this.title, required this.imageUrl}) : super(key: key);
@@ -16,6 +17,7 @@ class ProductItem extends StatelessWidget {
     final product = Provider.of<Product>(context);
     // Widget ini untuk paparan grid item kelihatan mcm mana.
     //Clip Rounded Rectangle
+    final cart = Provider.of<Cart>(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -48,7 +50,14 @@ class ProductItem extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: Icon(Icons.add_shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(
+                product.id.toString(),
+                product.price as double,
+                product.title.toString(),
+                product.quantity ?? '',
+              );
+            },
             // color: Theme.of(context).accentColor,
             color: Colors.cyanAccent,
           ),
