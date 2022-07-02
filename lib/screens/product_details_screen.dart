@@ -18,7 +18,8 @@ class ProductDetailScreen extends StatelessWidget {
     // final loadedProducts = Provider.of<Products>(context)
     //     .items
     //     .firstWhere((prod) => prod.id == productId);
-    final loadedProducts = Provider.of<Products>(context, listen: false).findById(productId);
+    final loadedProducts =
+        Provider.of<Products>(context, listen: false).findById(productId);
     return Scaffold(
       appBar: AppBar(
         title: Text(

@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       //provider 4.0 dan ke atas perlu guna create // 3.0 ke bawah use builder
       create: (context) => Products(),
       child: MaterialApp(
-        title: 'El Coffe',
+        title: 'Ngopi Dulu',
         theme: ThemeData(
-          primarySwatch: Colors.deepOrange,
+          primarySwatch: Colors.cyan,
           fontFamily: 'Lato',
         ),
         home: ProductsOverviewScreen(),
