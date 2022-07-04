@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pasar_app/screens/cart_screen.dart';
+import 'package:pasar_app/widgets/app_drawer.dart';
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
 import 'package:provider/provider.dart';
@@ -75,6 +76,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ),
         ],
       ),
+      drawer: AppDrawer(),
       //gridview builder sesuai untuk item yang byk yang kita tak tahu berapa
       body: ProductsGrid(
         showFavs: _showOnlyFavorites,
