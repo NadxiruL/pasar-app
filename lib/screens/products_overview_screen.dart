@@ -30,7 +30,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       //di sini kita akan render grid untuk produk.
       appBar: AppBar(
         title: const Text(
-          'Ngopi Dulu',
+          'Ngopi',
         ),
         actions: [
           PopupMenuButton(
