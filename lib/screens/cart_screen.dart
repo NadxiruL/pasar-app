@@ -37,7 +37,9 @@ class CartScreen extends StatelessWidget {
                   // ),
                   //a rounded corner widget // for price.
                   Chip(
-                    label: Text('\$${cart.totalAmount}'),
+                    label: Text(
+                      '\$${cart.totalAmount.toStringAsFixed(2)}',
+                    ),
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   ElevatedButton(
