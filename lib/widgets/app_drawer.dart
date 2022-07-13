@@ -13,7 +13,7 @@ class AppDrawer extends StatelessWidget {
         children: [
           AppBar(
             title: Text(
-              'Hello friends!',
+              'General',
             ),
             automaticallyImplyLeading: false,
           ),

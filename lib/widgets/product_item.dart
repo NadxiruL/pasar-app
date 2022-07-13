@@ -55,7 +55,7 @@ class ProductItem extends StatelessWidget {
                 product.id.toString(),
                 product.price as double,
                 product.title.toString(),
-                product.quantity,
+                product.quantity.toString(),
               );
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(
