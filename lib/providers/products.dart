@@ -93,7 +93,12 @@ class Products with ChangeNotifier {
       _items.add(newProduct);
       // _items.insert(0, newProduct); // at the start of the list.
       notifyListeners();
-    });
+    })
+      //pakai catcherror di sini sbb bia semua code di atas execute.
+      ..catchError((error) {
+        print(error);
+        throw error;
+      });
   }
 
   void updateProduct(String id, Product newProduct) {
