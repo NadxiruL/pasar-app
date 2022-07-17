@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import '../providers/product.dart';
 import '../providers/products.dart';
@@ -88,7 +86,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     }
   }
 
-  void _addProductForm() {
+  Future<void> _addProductForm() async {
     final isValid = _form.currentState!.validate();
     if (!isValid) {
       return;
@@ -107,10 +105,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
       });
       Navigator.of(context).pop();
     } else {
-      Provider.of<Products>(context, listen: false)
-          .addProduct(_editedProduct)
-          .catchError((error) {
-        showDialog(
+      try {
+        await Provider.of<Products>(context, listen: false)
+            .addProduct(_editedProduct);
+      } catch (error) {
+        await showDialog(
             context: context,
             builder: (ctx) {
               return AlertDialog(
@@ -125,18 +124,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 ],
               );
             });
-      }).then(
-        (_) {
-          setState(() {
-            _isLoading = false;
-          });
-          Navigator.of(context).pop();
-        },
-      );
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+        Navigator.of(context).pop();
+      }
     }
-    //exit
-    // Navigator.of(context).pop();
   }
+  //exit
+  // Navigator.of(context).pop();
 
   @override
   Widget build(BuildContext context) {

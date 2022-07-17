@@ -68,23 +68,23 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future<void> addProduct(Product product) {
+  Future<void> addProduct(Product product) async {
     final url = Uri.parse(
-        'https://flutter-app-ed219-default-rtdb.asia-southeast1.firebasedatabase.app/products.json');
-    return http
-        .post(
-      url,
-      body: json.encode({
-        'title': product.title,
-        'price': product.price,
-        'description': product.description,
-        'imageUrl': product.imageUrl,
-        'isFavorite': product.isFavorite,
-      }),
-    )
-        .then((response) {
+        'https://flutter-app-ed219-default-rtdb.asia-southeast1.firebasedatabase.app/products');
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode({
+          'title': product.title,
+          'price': product.price,
+          'description': product.description,
+          'imageUrl': product.imageUrl,
+          'isFavorite': product.isFavorite,
+        }),
+      );
+
       final newProduct = Product(
-        id: DateTime.now().toString(),
+        id: json.decode(response.body)['name'],
         title: product.title,
         description: product.description,
         price: product.price,
@@ -93,13 +93,16 @@ class Products with ChangeNotifier {
       _items.add(newProduct);
       // _items.insert(0, newProduct); // at the start of the list.
       notifyListeners();
-    })
-      //pakai catcherror di sini sbb bia semua code di atas execute.
-      ..catchError((error) {
-        print(error);
-        throw error;
-      });
+    } catch (error) {
+      print('error');
+      throw error;
+    }
   }
+  //pakai catcherror di sini sbb bia semua code di atas execute.
+  // ..catchError((error) {
+  //   print(error);
+  //   throw error;
+  // });
 
   void updateProduct(String id, Product newProduct) {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
