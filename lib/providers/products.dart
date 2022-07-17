@@ -68,9 +68,20 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
+  Future<void> fetchAndSetProducts() async {
+    final url = Uri.parse(
+        'https://flutter-app-ed219-default-rtdb.asia-southeast1.firebasedatabase.app/products.json');
+    try {
+      final response = await http.get(url);
+      print(json.decode(response.body));
+    } catch (error) {
+      throw (error);
+    }
+  }
+
   Future<void> addProduct(Product product) async {
     final url = Uri.parse(
-        'https://flutter-app-ed219-default-rtdb.asia-southeast1.firebasedatabase.app/products');
+        'https://flutter-app-ed219-default-rtdb.asia-southeast1.firebasedatabase.app/products.json');
     try {
       final response = await http.post(
         url,
