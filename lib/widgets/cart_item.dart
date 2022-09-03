@@ -83,7 +83,7 @@ class CartItem extends StatelessWidget {
                 ),
                 child: FittedBox(
                   child: Text(
-                    '\$$price',
+                    '\RM$price',
                   ),
                 ),
               ),
@@ -92,7 +92,7 @@ class CartItem extends StatelessWidget {
               title,
             ),
             subtitle: Text(
-              'Total: \$${(price! * quantity!)} ',
+              'Total: \RM${(price! * quantity!)} ',
             ),
             trailing: Text(
               '$quantity x',
